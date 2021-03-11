@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31005.135
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WDLT.Clients.POE", "WDLT.Clients.POE\WDLT.Clients.POE.csproj", "{BA915510-D412-42F1-A7EF-685EC732CCB6}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{BA915510-D412-42F1-A7EF-685EC732CCB6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BA915510-D412-42F1-A7EF-685EC732CCB6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BA915510-D412-42F1-A7EF-685EC732CCB6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BA915510-D412-42F1-A7EF-685EC732CCB6}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5B6094E1-92AD-406E-9C0C-95879C0FF2E3}
+	EndGlobalSection
+EndGlobal
