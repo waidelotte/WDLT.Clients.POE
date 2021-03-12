@@ -14,21 +14,21 @@ namespace WDLT.Clients.POE
         {
         }
 
-        public Task<POEResult<List<POELeague>>> Leagues()
+        public Task<POEResult<List<POELeague>>> LeaguesAsync()
         {
-            return RequestAsync<POEResult<List<POELeague>>>(new RestRequest("/api/trade/data/leagues"));
+            return POERequestAsync<POEResult<List<POELeague>>>(new RestRequest("/api/trade/data/leagues"));
         }
 
-        public Task<POESearchResult> Search(string league, POESearchPayload payload)
+        public Task<POESearchResult> SearchAsync(string league, POESearchPayload payload)
         {
             var request = new RestRequest($"/api/trade/search/{league}", Method.POST);
 
             request.AddParameter("application/json", JsonConvert.SerializeObject(payload), ParameterType.RequestBody);
 
-            return POERequest<POESearchResult>(request);
+            return POERequestAsync<POESearchResult>(request);
         }
 
-        public Task<POEResult<List<POEFetchResult>>> Fetch(string query, IEnumerable<string> pageIds)
+        public Task<POEResult<List<POEFetchResult>>> FetchAsync(string query, IEnumerable<string> pageIds)
         {
             var pages = string.Join(",", pageIds);
 
@@ -36,10 +36,10 @@ namespace WDLT.Clients.POE
 
             request.AddQueryParameter("query", query);
 
-            return POERequest<POEResult<List<POEFetchResult>>>(request);
+            return POERequestAsync<POEResult<List<POEFetchResult>>>(request);
         }
 
-        private Task<T> POERequest<T>(IRestRequest request, Proxy proxy = null)
+        private Task<T> POERequestAsync<T>(IRestRequest request, Proxy proxy = null)
         {
             try
             {
