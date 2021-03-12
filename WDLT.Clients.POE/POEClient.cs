@@ -1,14 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Net.Http;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
-using Newtonsoft.Json.Converters;
-using Newtonsoft.Json.Serialization;
 using RestSharp;
-using RestSharp.Serialization.Json;
 using WDLT.Clients.Base;
-using WDLT.Clients.POE.Enums;
 using WDLT.Clients.POE.Models;
 
 namespace WDLT.Clients.POE
