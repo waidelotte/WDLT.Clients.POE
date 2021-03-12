@@ -43,22 +43,5 @@ namespace Tests
 
             Assert.NotEmpty(fetch.Result);
         }
-
-        [Fact]
-        public async Task SpyTest()
-        {
-            var search = await _client.Search("Ritual", new POESearchPayload
-            {
-                Query = { Type = "Exalted Orb" },
-                Sort = new POESearchSort
-                {
-                    StackSize = EPOESort.Desc
-                }
-            });
-
-            var fetch = await _client.Fetch(search.Id, search.Result.Take(10));
-
-            Assert.NotEmpty(fetch.Result);
-        }
     }
 }
