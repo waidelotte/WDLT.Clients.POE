@@ -3,13 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31005.135
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WDLT.Clients.POE", "WDLT.Clients.POE\WDLT.Clients.POE.csproj", "{BA915510-D412-42F1-A7EF-685EC732CCB6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WDLT.Clients.POE", "WDLT.Clients.POE\WDLT.Clients.POE.csproj", "{BA915510-D412-42F1-A7EF-685EC732CCB6}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "submodules", "submodules", "{EF45CDA7-0E4E-4808-8B9A-50FC188B2350}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WDLT.Clients.Base", "WDLT.Clients.Base\WDLT.Clients.Base\WDLT.Clients.Base.csproj", "{A5C16488-63C9-45BE-BAC8-6358C9A021C6}"
-EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Tests", "Tests\Tests.csproj", "{E311726A-06D7-44B0-9C6C-1F31C308D1A9}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,10 +23,6 @@ Global
 		{A5C16488-63C9-45BE-BAC8-6358C9A021C6}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A5C16488-63C9-45BE-BAC8-6358C9A021C6}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A5C16488-63C9-45BE-BAC8-6358C9A021C6}.Release|Any CPU.Build.0 = Release|Any CPU
-		{E311726A-06D7-44B0-9C6C-1F31C308D1A9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{E311726A-06D7-44B0-9C6C-1F31C308D1A9}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{E311726A-06D7-44B0-9C6C-1F31C308D1A9}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{E311726A-06D7-44B0-9C6C-1F31C308D1A9}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
