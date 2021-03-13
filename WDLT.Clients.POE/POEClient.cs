@@ -24,6 +24,18 @@ namespace WDLT.Clients.POE
             return POERequestAsync<POEResult<List<POELeague>>>(new RestRequest("/api/trade/data/leagues"));
         }
 
+        public Task<POEAccountPins> AccountPinsAsync(string account, int limit = 10, int offset = 0, EPOERealm realm = EPOERealm.PC)
+        {
+            var request = new RestRequest("/api/account/showcase-pins");
+            request.AddQueryParameter("offset", offset.ToString());
+            request.AddQueryParameter("limit", limit.ToString());
+            request.AddQueryParameter("account", account);
+            request.AddQueryParameter("realm", realm.ToString().ToLower());
+            request.AddQueryParameter("_", DateTimeOffset.UtcNow.ToUnixTimeMilliseconds().ToString());
+
+            return POERequestAsync<POEAccountPins>(request);
+        }
+
         public Task<POEResult<List<POEStatic>>> StaticAsync()
         {
             return POERequestAsync<POEResult<List<POEStatic>>>(new RestRequest("/api/trade/data/static"));
