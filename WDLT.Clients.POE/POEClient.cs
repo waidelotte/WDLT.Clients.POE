@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 using Newtonsoft.Json;
 using RestSharp;
 using WDLT.Clients.Base;
+using WDLT.Clients.POE.Enums;
 using WDLT.Clients.POE.Models;
 
 namespace WDLT.Clients.POE
@@ -55,7 +57,40 @@ namespace WDLT.Clients.POE
             catch (ClientRequestException e)
             {
                 var errorDes = JsonConvert.DeserializeObject<POEErrorResponse>(e.Response.Content);
-                throw new POEException(errorDes.Error);
+
+                if (errorDes.Error.Code == 3)
+                {
+                    var exRateLimit = new POERateLimitException(errorDes.Error);
+
+                    var accountState = e.Response.Headers.FirstOrDefault(f => f.Name == "x-rate-limit-account-state");
+
+                    if (accountState != null)
+                    {
+                        var accountLimits = ParseRateLimit(accountState, EPOERateLimitType.Account).Where(w => w.Ban != 0);
+                        exRateLimit.RateLimits.AddRange(accountLimits);
+                    }
+                    else
+                    {
+                        var ipState = e.Response.Headers.First(f => f.Name == "x-rate-limit-ip-state");
+                        var ipLimits = ParseRateLimit(ipState, EPOERateLimitType.IP).Where(w => w.Ban != 0);
+                        exRateLimit.RateLimits.AddRange(ipLimits);
+                    }
+
+                    throw exRateLimit;
+                }
+                else
+                {
+                    throw new POEException(errorDes.Error);
+                }
+            }
+        }
+
+        public static IEnumerable<POERateLimit> ParseRateLimit(Parameter parameter, EPOERateLimitType type)
+        {
+            foreach (var coma in parameter.Value.ToString().Split(","))
+            {
+                var split = coma.Split(":");
+                yield return new POERateLimit(int.Parse(split[0]), int.Parse(split[1]), int.Parse(split[2]), type);
             }
         }
     }
