@@ -20,8 +20,6 @@ namespace WDLT.Clients.POE.Models
                     }
                 }
             };
-
-            Sort = new POESearchSort {Price = EPOESort.Asc};
         }
 
         [JsonProperty("query")]
