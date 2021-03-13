@@ -8,6 +8,9 @@ namespace WDLT.Clients.POE.Models
         [JsonProperty("status")]
         public POESearchStatus Status { get; set; }
 
+        [JsonProperty("filters", NullValueHandling = NullValueHandling.Ignore)]
+        public POESearchFilters Filters { get; set; }
+
         [JsonProperty("type", NullValueHandling = NullValueHandling.Ignore)]
         public string Type { get; set; }
 
