@@ -19,6 +19,11 @@ namespace WDLT.Clients.POE
             return POERequestAsync<POEResult<List<POELeague>>>(new RestRequest("/api/trade/data/leagues"));
         }
 
+        public Task<POEResult<List<POEStatic>>> StaticAsync()
+        {
+            return POERequestAsync<POEResult<List<POEStatic>>>(new RestRequest("/api/trade/data/static"));
+        }
+
         public Task<POESearchResult> SearchAsync(string league, POESearchPayload payload)
         {
             var request = new RestRequest($"/api/trade/search/{league}", Method.POST);
