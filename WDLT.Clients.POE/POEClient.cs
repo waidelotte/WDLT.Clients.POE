@@ -75,7 +75,7 @@ namespace WDLT.Clients.POE
                     {
                         var exRateLimit = new POERateLimitException(errorDes.Error);
 
-                        var accountState = e.Response.Headers.FirstOrDefault(f => f.Name == "x-rate-limit-account-state");
+                        var accountState = e.Response.Headers.FirstOrDefault(f => string.Equals(f.Name, "x-rate-limit-account-state", StringComparison.OrdinalIgnoreCase));
 
                         if (accountState != null)
                         {
@@ -84,7 +84,7 @@ namespace WDLT.Clients.POE
                         }
                         else
                         {
-                            var ipState = e.Response.Headers.First(f => f.Name == "x-rate-limit-ip-state");
+                            var ipState = e.Response.Headers.First(f => string.Equals(f.Name, "x-rate-limit-ip-state", StringComparison.OrdinalIgnoreCase));
                             var ipLimits = ParseRateLimit(ipState, EPOERateLimitType.IP).Where(w => w.Ban != 0);
                             exRateLimit.RateLimits.AddRange(ipLimits);
                         }
