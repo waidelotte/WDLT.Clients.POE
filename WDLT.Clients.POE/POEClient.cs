@@ -5,6 +5,7 @@ using System.Threading.Tasks;
 using Newtonsoft.Json;
 using RestSharp;
 using WDLT.Clients.Base;
+using WDLT.Clients.Base.Exceptions;
 using WDLT.Clients.POE.Enums;
 using WDLT.Clients.POE.Models;
 
@@ -56,32 +57,53 @@ namespace WDLT.Clients.POE
             }
             catch (ClientRequestException e)
             {
-                var errorDes = JsonConvert.DeserializeObject<POEErrorResponse>(e.Response.Content);
-
-                if (errorDes.Error.Code == 3)
+                if (TryDeserialize<POEErrorResponse>(e.Response.Content, out var errorDes))
                 {
-                    var exRateLimit = new POERateLimitException(errorDes.Error);
-
-                    var accountState = e.Response.Headers.FirstOrDefault(f => f.Name == "x-rate-limit-account-state");
-
-                    if (accountState != null)
+                    if (errorDes.Error.Code == 3)
                     {
-                        var accountLimits = ParseRateLimit(accountState, EPOERateLimitType.Account).Where(w => w.Ban != 0);
-                        exRateLimit.RateLimits.AddRange(accountLimits);
+                        var exRateLimit = new POERateLimitException(errorDes.Error);
+
+                        var accountState = e.Response.Headers.FirstOrDefault(f => f.Name == "x-rate-limit-account-state");
+
+                        if (accountState != null)
+                        {
+                            var accountLimits = ParseRateLimit(accountState, EPOERateLimitType.Account).Where(w => w.Ban != 0);
+                            exRateLimit.RateLimits.AddRange(accountLimits);
+                        }
+                        else
+                        {
+                            var ipState = e.Response.Headers.First(f => f.Name == "x-rate-limit-ip-state");
+                            var ipLimits = ParseRateLimit(ipState, EPOERateLimitType.IP).Where(w => w.Ban != 0);
+                            exRateLimit.RateLimits.AddRange(ipLimits);
+                        }
+
+                        throw exRateLimit;
                     }
                     else
                     {
-                        var ipState = e.Response.Headers.First(f => f.Name == "x-rate-limit-ip-state");
-                        var ipLimits = ParseRateLimit(ipState, EPOERateLimitType.IP).Where(w => w.Ban != 0);
-                        exRateLimit.RateLimits.AddRange(ipLimits);
+                        throw new POEException(errorDes.Error);
                     }
-
-                    throw exRateLimit;
                 }
                 else
                 {
-                    throw new POEException(errorDes.Error);
+                    throw;
                 }
+            }
+        }
+
+        private bool TryDeserialize<T>(string json, out T obj)
+        {
+            obj = default;
+
+            try
+            {
+                var des = JsonConvert.DeserializeObject<T>(json);
+                obj = des;
+                return true;
+            }
+            catch
+            {
+                return false;
             }
         }
 
