@@ -48,11 +48,11 @@ namespace WDLT.Clients.POE
             return POERequestAsync<POEResult<List<POEFetchResult>>>(request);
         }
 
-        private Task<T> POERequestAsync<T>(IRestRequest request, Proxy proxy = null)
+        private async Task<T> POERequestAsync<T>(IRestRequest request, Proxy proxy = null)
         {
             try
             {
-                return RequestAsync<T>(request, proxy);
+                return await RequestAsync<T>(request, proxy);
             }
             catch (ClientRequestException e)
             {
