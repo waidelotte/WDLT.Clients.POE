@@ -85,7 +85,7 @@ namespace WDLT.Clients.POE
                         else
                         {
                             var ipState = e.Response.Headers.First(f => string.Equals(f.Name, "x-rate-limit-ip-state", StringComparison.OrdinalIgnoreCase));
-                            var ipLimits = ParseRateLimit(ipState, EPOERateLimitType.IP).Where(w => w.Ban != 0).ToList();
+                            var ipLimits = ParseRateLimit(ipState, EPOERateLimitType.IP).Where(w => w.Ban != 0);
                             exRateLimit.RateLimits.AddRange(ipLimits);
                         }
 
