@@ -10,6 +10,8 @@ namespace WDLT.Clients.POE
 {
     public class POEClient : BaseClient
     {
+        public static string CDN { get; } = "https://web.poecdn.com";
+
         public POEClient(string userAgent) : base("https://www.pathofexile.com", userAgent)
         {
         }
