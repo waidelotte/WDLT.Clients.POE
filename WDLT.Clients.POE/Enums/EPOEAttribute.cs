@@ -13,6 +13,7 @@ namespace WDLT.Clients.POE.Enums
         Strength,
         [EnumMember(Value = "I")]
         Intelligence,
-        G
+        G,
+        A
     }
 }
