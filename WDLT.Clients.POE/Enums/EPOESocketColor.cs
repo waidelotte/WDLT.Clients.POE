@@ -14,6 +14,7 @@ namespace WDLT.Clients.POE.Enums
         [EnumMember(Value = "B")]
         Blue,
         [EnumMember(Value = "W")]
-        White
+        White,
+        A
     }
 }
