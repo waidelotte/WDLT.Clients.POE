@@ -13,7 +13,9 @@ namespace WDLT.Clients.POE.Enums
         Strength,
         [EnumMember(Value = "I")]
         Intelligence,
-        G,
-        A
+        [EnumMember(Value = "G")]
+        White,
+        [EnumMember(Value = "A")]
+        Abyss
     }
 }

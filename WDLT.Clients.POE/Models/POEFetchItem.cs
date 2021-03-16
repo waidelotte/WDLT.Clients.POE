@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Newtonsoft.Json;
+using WDLT.Clients.POE.Enums;
 
 namespace WDLT.Clients.POE.Models
 {
@@ -39,6 +40,12 @@ namespace WDLT.Clients.POE.Models
         [JsonProperty("identified")]
         public bool Identified { get; set; }
 
+        [JsonProperty("thRaceReward")]
+        public bool RaceReward { get; set; }
+
+        [JsonProperty("isRelic")]
+        public bool IsRelic { get; set; }
+
         [JsonProperty("ilvl")]
         public int ILVL { get; set; }
 
@@ -52,7 +59,7 @@ namespace WDLT.Clients.POE.Models
         public string SecDescrText { get; set; }
 
         [JsonProperty("frameType")]
-        public int FrameType { get; set; }
+        public EPOEFrameType FrameType { get; set; }
 
         [JsonProperty("requirements")]
         public List<POEFetchItemProperty> Requirements { get; set; }
@@ -107,6 +114,9 @@ namespace WDLT.Clients.POE.Models
 
         [JsonProperty("duplicated")]
         public bool Duplicated { get; set; }
+
+        [JsonProperty("fractured")]
+        public bool Fractured { get; set; }
 
         [JsonProperty("veiled")]
         public bool Veiled { get; set; }

@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using WDLT.Clients.POE.Models;
 
-namespace WDLT.Clients.POE
+namespace WDLT.Clients.POE.Exception
 {
     public class POERateLimitException : POEException
     {
