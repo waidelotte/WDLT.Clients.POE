@@ -58,6 +58,9 @@ namespace WDLT.Clients.POE.Models
         [JsonProperty("secDescrText")]
         public string SecDescrText { get; set; }
 
+        [JsonProperty("prophecyText")]
+        public string ProphecyText { get; set; }
+
         [JsonProperty("frameType")]
         public EPOEFrameType FrameType { get; set; }
 
@@ -66,6 +69,9 @@ namespace WDLT.Clients.POE.Models
 
         [JsonProperty("properties")]
         public List<POEFetchItemProperty> Properties { get; set; }
+
+        [JsonProperty("additionalProperties")]
+        public List<POEFetchItemProperty> AdditionalProperties { get; set; }
 
         [JsonProperty("explicitMods")]
         public List<string> ExplicitMods { get; set; }

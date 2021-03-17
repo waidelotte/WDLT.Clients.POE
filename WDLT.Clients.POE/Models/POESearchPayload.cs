@@ -10,7 +10,7 @@ namespace WDLT.Clients.POE.Models
         {
             Query = new POESearchQuery
             {
-                Status = new POESearchStatus { Option = EPOEOnlineStatus.Online },
+                Status = new EPOEOption<EPOEOnlineStatus> { Option = EPOEOnlineStatus.Online },
                 Stats = new List<POESearchStat>
                 {
                     new POESearchStat
