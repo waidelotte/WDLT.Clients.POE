@@ -5,13 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <SolutionSubmodule Include="$(SolutionDir)\WDLT.Clients.Base\WDLT.Clients.Base\WDLT.Clients.Base.csproj"></SolutionSubmodule>
-    <NestedSubmodule Include="..\..\WDLT.Clients.Base\WDLT.Clients.Base\WDLT.Clients.Base.csproj"></NestedSubmodule>
-  </ItemGroup>
-
-  <ItemGroup>
-    <ProjectReference Include="@(SolutionSubmodule)" Condition="Exists(@(SolutionSubmodule))" />
-    <ProjectReference Include="@(NestedSubmodule)" Condition="!Exists(@(SolutionSubmodule))" />
+    <ProjectReference Include="..\WDLT.Clients.Base\WDLT.Clients.Base\WDLT.Clients.Base.csproj" />
   </ItemGroup>
 
 </Project>
