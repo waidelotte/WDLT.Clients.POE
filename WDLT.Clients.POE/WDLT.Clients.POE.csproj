@@ -2,10 +2,25 @@
 
   <PropertyGroup>
     <TargetFramework>net5.0</TargetFramework>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Authors>Prokhorchuk Vladyslav</Authors>
+    <Company>Prokhorchuk Vladyslav</Company>
+    <Description>Path Of Exile Client</Description>
+    <Copyright>Copyright © Prokhorchuk Vladyslav 2021</Copyright>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
+    <RepositoryUrl>https://github.com/waidelotte/WDLT.Clients.POE</RepositoryUrl>
+    <PackageProjectUrl>https://github.com/waidelotte/WDLT.Clients.POE</PackageProjectUrl>
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\WDLT.Clients.Base\WDLT.Clients.Base\WDLT.Clients.Base.csproj" />
+    <PackageReference Include="WDLT.Clients.Base" Version="1.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="..\LICENSE">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
   </ItemGroup>
 
 </Project>
