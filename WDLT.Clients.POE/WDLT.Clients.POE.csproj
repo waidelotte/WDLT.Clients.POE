@@ -10,6 +10,7 @@
     <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <RepositoryUrl>https://github.com/waidelotte/WDLT.Clients.POE</RepositoryUrl>
     <PackageProjectUrl>https://github.com/waidelotte/WDLT.Clients.POE</PackageProjectUrl>
+    <Version>1.0.0.1</Version>
   </PropertyGroup>
 
   <ItemGroup>
